@@ -1,8 +1,11 @@
 <div class="container">
+  <h3 *ngIf="hits && !hits?.length">
+    No se encontraron resultados para la busqueda
+  </h3>
+
+  <h3 *ngIf="q">{{ q }}</h3>
+  <hr />
   <div class="row">
-    <h3 *ngIf="hits && !hits?.length">
-      No se encontraron resultados para la busqueda
-    </h3>
     <div class="col-lg-4 col-sm-6 mb-2" *ngFor="let hit of hits">
       <a [routerLink]="['/', hit.id]" class="card-link">
         <div class="card shadow-sm">

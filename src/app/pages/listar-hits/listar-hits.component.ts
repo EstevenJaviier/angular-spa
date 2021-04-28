@@ -10,6 +10,7 @@ import { fromRoot } from 'src/app/states/hits';
   styleUrls: ['./listar-hits.component.css'],
 })
 export class ListarHitsComponent implements OnInit {
+  q: string;
   hits: Array<Hit>;
 
   hits$: Observable<Hit[]>;
@@ -25,6 +26,7 @@ export class ListarHitsComponent implements OnInit {
     this.hits$.subscribe((data: any) => (this.hits = data.hits));
 
     this.route.queryParamMap.subscribe((params: ParamMap) => {
+      this.q = params.get('q');
       this.store.dispatch(
         fromRoot.getHits({
           q: params.get('q'),
