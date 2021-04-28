@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSearch = this.fb.group({
-      q: [null],
+      q: [null, [Validators.maxLength(100)]],
       category: [null],
     });
 
@@ -31,9 +31,14 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+    const q = this.formSearch.get('q').value;
+    if (q.length > 100) {
+      return alert('La busqueda debe ser de máximo 100 caracteres.');
+    }
+
     this.router.navigate(['/'], {
       queryParams: {
-        q: this.formSearch.get('q').value,
+        q: q,
         category: this.formSearch.get('category').value,
       },
     });
