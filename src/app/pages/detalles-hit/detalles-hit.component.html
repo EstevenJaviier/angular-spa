@@ -1,18 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-7">
-      <img class="shadow-lg" [src]="hit?.webformatURL" [alt]="hit?.tags" />
+    <div class="col-lg-7 mb-3">
+      <img
+        class="shadow-lg img-fluid"
+        [src]="hit?.webformatURL"
+        [alt]="hit?.tags"
+      />
     </div>
 
-    <div class="col-lg-5">
+    <div class="col-lg-5 mb-3">
       <div class="card shadow">
         <div class="card-header">Detalles</div>
         <div class="card-body">
           <p class="card-text mb-0">
-            <strong>{{ hit.likes | number }}</strong> Likes
+            <strong>👍 {{ hit.likes | number }}</strong> Likes
           </p>
           <p class="card-text mb-0">
-            <strong>{{ hit.views | number }}</strong> Vistas
+            <strong>👁‍🗨 {{ hit.views | number }}</strong> Vistas
           </p>
 
           <hr />

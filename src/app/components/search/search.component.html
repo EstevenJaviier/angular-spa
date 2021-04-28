@@ -5,7 +5,7 @@
         formControlName="category"
         class="form-control text-capitalize border-radious-none"
       >
-        <option [ngValue]="null">Categorias</option>
+        <option [ngValue]="null" disabled>Categorias</option>
         <option value="science">science</option>
         <option value="education">education</option>
         <option value="people">people</option>
@@ -24,7 +24,7 @@
     />
 
     <div class="input-group-append">
-      <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      <button class="btn btn-success" type="submit">Buscar</button>
     </div>
   </div>
 </form>

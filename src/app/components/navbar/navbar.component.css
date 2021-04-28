@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.navbar {
+  background-color: rgba(138, 194, 73, 85%) !important;
+  backdrop-filter: blur(10px);
+}
