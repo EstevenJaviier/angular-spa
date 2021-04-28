@@ -1,13 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
+  @ViewChild('searchInput') searchInput: ElementRef;
   formSearch: FormGroup;
 
   constructor(
@@ -15,6 +24,23 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {}
+
+  ngAfterViewInit(): void {
+    fromEvent(this.searchInput.nativeElement, 'input')
+      .pipe(
+        map(({ target }: { target: HTMLInputElement }) => target.value.trim()),
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe((value) => {
+        this.router.navigate(['/'], {
+          queryParams: {
+            q: value,
+            category: this.formSearch.get('category').value,
+          },
+        });
+      });
+  }
 
   ngOnInit(): void {
     this.formSearch = this.fb.group({
