@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.border-radious-none {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}

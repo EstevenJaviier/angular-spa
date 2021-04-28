@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <img class="shadow-lg" [src]="hit?.webformatURL" [alt]="hit?.tags" />
+    </div>
+
+    <div class="col-lg-5">
+      <div class="card shadow">
+        <div class="card-header">Detalles</div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            <strong>{{ hit.likes | number }}</strong> Likes
+          </p>
+          <p class="card-text mb-0">
+            <strong>{{ hit.views | number }}</strong> Vistas
+          </p>
+
+          <hr />
+
+          <ng-container *ngFor="let tag of handlerTags(hit.tags); index as i">
+            <span class="badge badge-primary ml-1"> {{ tag }}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

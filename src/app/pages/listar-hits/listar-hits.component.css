@@ -1,0 +1,18 @@
+.foto {
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-link {
+  color: inherit;
+  display: block;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.card-link:hover {
+  box-shadow: 0 0.35em 1.175em rgb(2 8 20 / 10%),
+    0 0.175em 0.5em rgb(2 8 20 / 8%);
+  transform: translateY(-3px);
+}
