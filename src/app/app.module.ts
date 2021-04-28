@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetallesHitComponent } from './pages/detalles-hit/detalles-hit.component';
 
 import { fromRoot } from './states/hits';
+import { ImgLazyDirective } from './directives/img-lazy.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { fromRoot } from './states/hits';
     SearchComponent,
     NavbarComponent,
     DetallesHitComponent,
+    ImgLazyDirective,
   ],
   imports: [
     BrowserModule,
