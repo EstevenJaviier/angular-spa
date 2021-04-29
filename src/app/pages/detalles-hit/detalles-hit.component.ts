@@ -4,19 +4,20 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Hit } from 'src/app/interfaces/hit.interface';
 import { fromRoot } from 'src/app/states/hits';
+import { HitState } from 'src/app/states/hits/hit.state';
 
 @Component({
   templateUrl: './detalles-hit.component.html',
   styleUrls: ['./detalles-hit.component.css'],
 })
 export class DetallesHitComponent implements OnInit {
-  hits$: Observable<any>;
+  hits$: Observable<HitState>;
   hit: Hit;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<{ hits: Hit[] }>
+    private store: Store<{ hits: HitState }>
   ) {
     this.hits$ = this.store.select((state) => state.hits);
   }
