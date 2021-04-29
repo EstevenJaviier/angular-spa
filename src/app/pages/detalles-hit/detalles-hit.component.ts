@@ -11,7 +11,7 @@ import { HitState } from 'src/app/states/hits/hit.state';
   styleUrls: ['./detalles-hit.component.css'],
 })
 export class DetallesHitComponent implements OnInit {
-  hits$: Observable<HitState>;
+  hit$: Observable<{ hit: Hit }>;
   hit: Hit;
 
   constructor(
@@ -19,7 +19,7 @@ export class DetallesHitComponent implements OnInit {
     private router: Router,
     private store: Store<{ hits: HitState }>
   ) {
-    this.hits$ = this.store.select((state) => state.hits);
+    this.hit$ = this.store.select((state) => state.hits);
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class DetallesHitComponent implements OnInit {
       this.store.dispatch(fromRoot.getHitById({ id: +params.get('id') }));
     });
 
-    this.hits$.subscribe((data) => {
+    this.hit$.subscribe((data) => {
       this.hit = data.hit;
       if (!this.hit) {
         this.router.navigate(['/'], { preserveFragment: true });
