@@ -16,7 +16,7 @@ export class DetallesHitComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<{ hits: Hit[] }>
+    private store: Store<{ hits: { hit: Hit } }>
   ) {
     this.hits$ = this.store.select((state) => state.hits);
   }
