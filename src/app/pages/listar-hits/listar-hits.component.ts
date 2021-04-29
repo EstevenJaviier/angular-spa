@@ -12,9 +12,7 @@ import { HitState } from 'src/app/states/hits/hit.state';
 })
 export class ListarHitsComponent implements OnInit {
   q: string;
-  hits: Array<Hit>;
-
-  hits$: Observable<HitState>;
+  hits$: Observable<{ hits: Hit[] }>;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +22,6 @@ export class ListarHitsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hits$.subscribe((data) => (this.hits = data.hits));
-
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       this.q = params.get('q');
       this.store.dispatch(

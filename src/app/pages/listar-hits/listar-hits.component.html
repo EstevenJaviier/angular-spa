@@ -1,12 +1,15 @@
 <div class="container">
-  <h3 *ngIf="hits && !hits?.length">
+  <h3 *ngIf="(hits$ | async).hits && !(hits$ | async).hits?.length">
     No se encontraron resultados para la busqueda
   </h3>
 
   <h3 *ngIf="q">{{ q }}</h3>
   <hr />
   <div class="row">
-    <div class="col-lg-4 col-sm-6 mb-2" *ngFor="let hit of hits">
+    <div
+      class="col-lg-4 col-sm-6 mb-2"
+      *ngFor="let hit of (hits$ | async).hits"
+    >
       <a
         [routerLink]="['/', hit?.id]"
         class="card-link"
