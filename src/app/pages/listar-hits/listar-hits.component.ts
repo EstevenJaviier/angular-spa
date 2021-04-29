@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Hit } from 'src/app/interfaces/hit.interface';
 import { fromRoot } from 'src/app/states/hits';
+import { HitState } from 'src/app/states/hits/hit.state';
 
 @Component({
   templateUrl: './listar-hits.component.html',
@@ -13,11 +14,11 @@ export class ListarHitsComponent implements OnInit {
   q: string;
   hits: Array<Hit>;
 
-  hits$: Observable<{ hits: Hit[] }>;
+  hits$: Observable<HitState>;
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<{ hits: { hits: Hit[] } }>
+    private store: Store<{ hits: HitState }>
   ) {
     this.hits$ = this.store.select((state) => state.hits);
   }
