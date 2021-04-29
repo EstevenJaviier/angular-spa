@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { HitState } from './hit.reducer';
+import { HitState } from './hit.state';
 
 const getHitState = createFeatureSelector<HitState>('hits');
 
