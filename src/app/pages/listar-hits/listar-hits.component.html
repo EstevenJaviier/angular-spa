@@ -23,16 +23,18 @@
             ImgLazy
           />
           <div class="card-body">
-            <p class="card-text mb-0">
-              <strong>👍 {{ hit?.likes | number }}</strong> Likes
-            </p>
-            <p class="card-text mb-0">
-              <strong>👁‍🗨 {{ hit?.views | number }}</strong> Vistas
-            </p>
+            <div class="d-flex align-items-center justify-content-between">
+              <p class="card-text mb-0">
+                <strong>👍 {{ hit?.likes | number }}</strong> Likes
+              </p>
+              <p class="card-text mb-0">
+                <strong>👁‍🗨 {{ hit?.views | number }}</strong> Vistas
+              </p>
+            </div>
 
             <hr />
             <ng-container *ngFor="let tag of handlerTags(hit?.tags)">
-              <span class="badge badge-primary ml-1">{{ tag }}</span>
+              <span class="badge badge-primary ml-1"> {{ tag }}</span>
             </ng-container>
           </div>
         </div>

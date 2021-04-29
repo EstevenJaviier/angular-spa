@@ -1,3 +1,12 @@
 :host {
   display: block;
 }
+
+.card {
+  background-color: rgba(255, 255, 255, 48%);
+  backdrop-filter: blur(3px);
+}
+
+.foto {
+  background-color: white;
+}

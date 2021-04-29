@@ -13,6 +13,7 @@ import { HitState } from 'src/app/states/hits/hit.state';
 export class DetallesHitComponent implements OnInit {
   hit$: Observable<{ hit: Hit }>;
   hit: Hit;
+  imagenId: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +25,8 @@ export class DetallesHitComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.store.dispatch(fromRoot.getHitById({ id: +params.get('id') }));
+      this.imagenId = +params.get('id');
+      this.store.dispatch(fromRoot.getHitById({ id: this.imagenId }));
     });
 
     this.hit$.subscribe((data) => {
