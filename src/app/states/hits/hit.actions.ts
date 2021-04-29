@@ -13,7 +13,7 @@ export const getHitsSuccess = createAction(
 
 export const getHitsFailure = createAction(
   '[Hits] Get Hit Failure',
-  props<{ message: string }>()
+  props<{ errMessage: string }>()
 );
 
 export const getHitById = createAction(

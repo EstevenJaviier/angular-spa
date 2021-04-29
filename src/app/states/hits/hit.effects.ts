@@ -21,7 +21,7 @@ export class HitEffects {
           .pipe(
             map((data) => HitActions.getHitsSuccess({ hits: data.hits })),
             catchError((error) =>
-              of(HitActions.getHitsFailure({ message: error }))
+              of(HitActions.getHitsFailure({ errMessage: error.message }))
             )
           );
       })
