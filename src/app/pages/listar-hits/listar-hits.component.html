@@ -7,7 +7,11 @@
   <hr />
   <div class="row">
     <div class="col-lg-4 col-sm-6 mb-2" *ngFor="let hit of hits">
-      <a [routerLink]="['/', hit.id]" class="card-link">
+      <a
+        [routerLink]="['/', hit?.id]"
+        class="card-link"
+        queryParamsHandling="merge"
+      >
         <div class="card shadow-sm">
           <img
             [src]="hit.webformatURL"
@@ -16,14 +20,14 @@
           />
           <div class="card-body">
             <p class="card-text mb-0">
-              <strong>👍 {{ hit.likes | number }}</strong> Likes
+              <strong>👍 {{ hit?.likes | number }}</strong> Likes
             </p>
             <p class="card-text mb-0">
-              <strong>👁‍🗨 {{ hit.views | number }}</strong> Vistas
+              <strong>👁‍🗨 {{ hit?.views | number }}</strong> Vistas
             </p>
 
             <hr />
-            <ng-container *ngFor="let tag of handlerTags(hit.tags); index as i">
+            <ng-container *ngFor="let tag of handlerTags(hit?.tags)">
               <span class="badge badge-primary ml-1">{{ tag }}</span>
             </ng-container>
           </div>

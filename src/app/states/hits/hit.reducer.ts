@@ -11,6 +11,10 @@ const _hitReducer = createReducer(
   on(HitActions.getHitsFailure, (state, action) => ({
     ...state,
     errMessage: action.errMessage,
+  })),
+  on(HitActions.getHitById, (state, action) => ({
+    ...state,
+    hit: state.hits.find((hit) => hit.id === action.id),
   }))
 );
 
