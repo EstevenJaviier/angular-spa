@@ -1,18 +1,21 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { Hit } from 'src/app/interfaces/hit.interface';
 import * as HitActions from './hit.actions';
-
-export interface HitState {
-  hits: Hit[];
-}
-
-export const initialState: HitState = {
-  hits: [],
-};
+import { HitState, initialState } from './hit.state';
 
 const _hitReducer = createReducer(
   initialState,
-  on(HitActions.getHitsSuccess, (state, action) => ({ hits: action.hits }))
+  on(HitActions.getHitsSuccess, (state, action) => ({
+    ...state,
+    hits: action.hits,
+  })),
+  on(HitActions.getHitsFailure, (state, action) => ({
+    ...state,
+    errMessage: action.errMessage,
+  })),
+  on(HitActions.getHitById, (state, action) => ({
+    ...state,
+    hit: state.hits.find((hit) => hit.id === action.id),
+  }))
 );
 
 export function hitReducer(state: HitState | undefined, action: Action) {

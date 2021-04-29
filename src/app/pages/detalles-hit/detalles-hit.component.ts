@@ -3,16 +3,15 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Hit } from 'src/app/interfaces/hit.interface';
+import { fromRoot } from 'src/app/states/hits';
 
 @Component({
   templateUrl: './detalles-hit.component.html',
   styleUrls: ['./detalles-hit.component.css'],
 })
 export class DetallesHitComponent implements OnInit {
-  hits: Array<Hit>;
+  hits$: Observable<any>;
   hit: Hit;
-
-  hits$: Observable<Hit[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,18 +22,19 @@ export class DetallesHitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hits$.subscribe((data: any) => (this.hits = data.hits));
-
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.hit = this.hits.find((hit) => hit.id === +params.get('id'));
+      this.store.dispatch(fromRoot.getHitById({ id: +params.get('id') }));
+    });
 
+    this.hits$.subscribe((data) => {
+      this.hit = data.hit;
       if (!this.hit) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/'], { preserveFragment: true });
       }
     });
   }
 
   handlerTags(tags: string) {
-    return tags.split(',');
+    return tags?.split(',');
   }
 }

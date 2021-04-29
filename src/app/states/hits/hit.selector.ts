@@ -1,9 +1,16 @@
-import { createSelector } from '@ngrx/store';
-import { HitState } from './hit.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { HitState } from './hit.state';
 
-const getHits = (state: HitState) => state.hits;
+const getHitState = createFeatureSelector<HitState>('hits');
 
-export const getStateHit = createSelector(
+export const selectGetHits = createSelector(
   (state: { hitState: HitState }) => state.hitState,
-  getHits
+  getHitState
+);
+
+export const selectGetHitById = createSelector(
+  (state: { hitState: HitState }, props: any) => {
+    return state.hitState.hits.find((hit) => hit.id === props.id);
+  },
+  getHitState
 );

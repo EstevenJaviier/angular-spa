@@ -1,12 +1,20 @@
-import { getHits, getHitsSuccess } from './hit.actions';
+import {
+  getHits,
+  getHitsSuccess,
+  getHitById,
+  getHitsFailure,
+} from './hit.actions';
 import { HitEffects } from './hit.effects';
 import { hitReducer } from './hit.reducer';
-import { getStateHit } from './hit.selector';
+import { selectGetHitById, selectGetHits } from './hit.selector';
 
 export const fromRoot = {
   getHits,
   getHitsSuccess,
   HitEffects,
   hitReducer,
-  getStateHit,
+  getHitById,
+  getHitsFailure,
+  selectGetHitById,
+  selectGetHits,
 };

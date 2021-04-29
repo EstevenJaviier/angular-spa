@@ -11,12 +11,12 @@ export const getHitsSuccess = createAction(
   props<{ hits: Hit[] }>()
 );
 
-export const getOneHits = createAction(
-  '[Hits] Get One Hits',
-  props<{ id: number }>()
+export const getHitsFailure = createAction(
+  '[Hits] Get Hit Failure',
+  props<{ errMessage: string }>()
 );
 
-export const getHitsOneSuccess = createAction(
-  '[Hits] Get One Hit Success',
-  props<{ hits: Hit[] }>()
+export const getHitById = createAction(
+  '[Hits] Get Hit By Id',
+  props<{ id: number }>()
 );
