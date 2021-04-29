@@ -58,7 +58,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     const q = this.formSearch.get('q').value;
-    if (q.length > 100) {
+    if (q?.length > 100) {
       return alert('La busqueda debe ser de máximo 100 caracteres.');
     }
 
