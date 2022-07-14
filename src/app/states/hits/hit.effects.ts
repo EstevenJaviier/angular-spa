@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { PixabayService } from '../../services/pixabay.service';
+import { PixabayService } from '../../core/services/pixabay.service';
 import * as HitActions from './hit.actions';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class HitEffects {
           .pipe(
             map((data) => HitActions.getHitsSuccess({ hits: data.hits })),
             catchError((error) =>
-              of(HitActions.getHitsFailure({ errMessage: error.message }))
+              of(HitActions.getHitsFailure({ error: error.message }))
             )
           );
       })
