@@ -4,13 +4,19 @@ import { HitState, initialState } from './hit.state';
 
 const _hitReducer = createReducer(
   initialState,
+  on(HitActions.getHits, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
   on(HitActions.getHitsSuccess, (state, action) => ({
     ...state,
     hits: action.hits,
+    isLoading: false,
   })),
   on(HitActions.getHitsFailure, (state, action) => ({
     ...state,
-    errMessage: action.errMessage,
+    error: action.error,
+    isLoading: false,
   })),
   on(HitActions.getHitById, (state, action) => ({
     ...state,

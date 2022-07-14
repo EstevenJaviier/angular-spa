@@ -9,8 +9,6 @@ export const selectGetHits = createSelector(
 );
 
 export const selectGetHitById = createSelector(
-  (state: { hitState: HitState }, props: any) => {
-    return state.hitState.hits.find((hit) => hit.id === props.id);
-  },
+  (state: { hitState: HitState }) => state.hitState.hit,
   getHitState
 );

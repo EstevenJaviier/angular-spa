@@ -15,7 +15,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetallesHitComponent } from './pages/detalles-hit/detalles-hit.component';
 
 import { fromRoot } from './states/hits';
+import { ImgLazyDirective } from './core/directives/img-lazy.directive';
 import { environment } from 'src/environments/environment';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,13 @@ import { environment } from 'src/environments/environment';
     SearchComponent,
     NavbarComponent,
     DetallesHitComponent,
+    ImgLazyDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
+    CoreModule,
     StoreModule.forRoot({ hits: fromRoot.hitReducer }),
     EffectsModule.forRoot([fromRoot.HitEffects]),
     StoreDevtoolsModule.instrument({
