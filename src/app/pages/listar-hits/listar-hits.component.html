@@ -1,11 +1,11 @@
 <div class="container">
-  <h3 *ngIf="this.isLoading">Cargando...</h3>
+  <h3 *ngIf="isLoading">Cargando...</h3>
 
-  <h3 *ngIf="!this.isLoading && !hits?.length && !error">
+  <h3 *ngIf="!isLoading && !hits?.length && !error">
     No se encontraron resultados para la busqueda:
   </h3>
 
-  <h3 *ngIf="!this.isLoading && !hits?.length && error">
+  <h3 *ngIf="!isLoading && !hits?.length && error">
     Error: {{ error }}
   </h3>
 

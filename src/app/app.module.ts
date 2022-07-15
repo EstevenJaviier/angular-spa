@@ -13,11 +13,11 @@ import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetallesHitComponent } from './pages/detalles-hit/detalles-hit.component';
 
-import { fromRoot } from './states/hits';
 import { ImgLazyDirective } from './core/directives/img-lazy.directive';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
 import { appReducer } from './states/app.state';
+import { HitEffects } from './states/hits/hit.effects';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { appReducer } from './states/app.state';
     ReactiveFormsModule,
     CoreModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([fromRoot.HitEffects]),
+    EffectsModule.forRoot([HitEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

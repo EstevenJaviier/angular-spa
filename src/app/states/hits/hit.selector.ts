@@ -4,11 +4,16 @@ import { HitState } from './hit.state';
 const getHitState = createFeatureSelector<HitState>('hits');
 
 export const selectGetHits = createSelector(
-  (state: { hitState: HitState }) => state.hitState,
-  getHitState
+  getHitState,
+  (hitState: HitState) => hitState.hits
 );
 
 export const selectGetHitById = createSelector(
-  (state: { hitState: HitState }) => state.hitState.hit,
-  getHitState
+  getHitState,
+  (hitState: HitState) => hitState.hit
+);
+
+export const selectIsLoading = createSelector(
+  getHitState,
+  (hitState: HitState) => hitState.isLoading
 );
