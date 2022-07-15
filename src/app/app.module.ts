@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +17,7 @@ import { fromRoot } from './states/hits';
 import { ImgLazyDirective } from './core/directives/img-lazy.directive';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
+import { appReducer } from './states/app.state';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     ReactiveFormsModule,
     CoreModule,
-    StoreModule.forRoot({ hits: fromRoot.hitReducer }),
+    StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([fromRoot.HitEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
