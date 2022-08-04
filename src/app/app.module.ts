@@ -16,8 +16,7 @@ import { DetallesHitComponent } from './pages/detalles-hit/detalles-hit.componen
 import { ImgLazyDirective } from './core/directives/img-lazy.directive';
 import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
-import { appReducer } from './states/app.state';
-import { HitEffects } from './states/hits/hit.effects';
+import { appEffects, appReducer } from './states/app.state';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { HitEffects } from './states/hits/hit.effects';
     ReactiveFormsModule,
     CoreModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([HitEffects]),
+    EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

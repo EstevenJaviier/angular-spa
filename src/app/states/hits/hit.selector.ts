@@ -1,7 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { HitState } from './hit.state';
 
-const getHitState = createFeatureSelector<HitState>('hits');
+export const HIT_STATE_NAME = 'hits';
+
+const getHitState = createFeatureSelector<HitState>(HIT_STATE_NAME);
 
 export const selectGetHits = createSelector(
   getHitState,
