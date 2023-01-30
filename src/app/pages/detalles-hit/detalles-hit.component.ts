@@ -38,7 +38,7 @@ export class DetallesHitComponent implements OnInit, OnDestroy {
       .pipe(select(selectGetHitById))
       .subscribe((data) => {
         this.hit = data;
-        !this.hit && this.router.navigate(['/'], { preserveFragment: true });
+        !this.hit && this.router.navigate(['/angular'], { preserveFragment: true });
       });
   }
 

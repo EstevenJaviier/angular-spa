@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
         distinctUntilChanged()
       )
       .subscribe((value) => {
-        this.router.navigate(['/'], {
+        this.router.navigate(['/angular'], {
           queryParams: {
             q: value,
             category: this.formSearch.get('category').value,
@@ -62,7 +62,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
       return alert('La busqueda debe ser de máximo 100 caracteres.');
     }
 
-    this.router.navigate(['/'], {
+    this.router.navigate(['/angular'], {
       queryParams: {
         q: q,
         category: this.formSearch.get('category').value,

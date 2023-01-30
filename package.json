@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:single-spa:bolsiyo": "ng build bolsiyo --prod --deploy-url http://localhost:4200/",
+    "serve:single-spa:bolsiyo": "ng s --project bolsiyo --disable-host-check --port 4300 --deploy-url http://localhost:4300/ --live-reload false"
   },
   "private": true,
   "dependencies": {
@@ -27,10 +29,13 @@
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
+    "single-spa": ">=4.0.0",
+    "single-spa-angular": "^4.9.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "11.1.2-beta.0",
     "@angular-devkit/build-angular": "~0.1102.10",
     "@angular/cli": "~11.2.10",
     "@angular/compiler-cli": "~11.2.11",
